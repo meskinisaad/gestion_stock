@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Ajouter Mouvement{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Ajouter Mouvement</h1>
+
+<div class="card shadow p-4">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Valider</button>
+        <a href="{% url 'liste_mouvements' %}" class="btn btn-secondary">Retour</a>
+    </form>
+</div>
+{% endblock %}

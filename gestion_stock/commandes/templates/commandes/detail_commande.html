@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Détail Commande{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Commande #{{ commande.id }}</h1>
+
+<p><strong>Fournisseur:</strong> {{ commande.fournisseur }}</p>
+<p><strong>Date:</strong> {{ commande.date }}</p>
+<p><strong>Statut:</strong> {{ commande.statut }}</p>
+
+{% if user.is_authenticated %}
+    {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
+        <a href="{% url 'ajouter_ligne_commande' commande.id %}" class="btn btn-primary mb-3">Ajouter ligne</a>
+    {% endif %}
+{% endif %}
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Produit</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ligne in lignes %}
+        <tr>
+            <td>{{ ligne.produit }}</td>
+            <td>{{ ligne.quantite }}</td>
+            <td>{{ ligne.prix }} DH</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center">Aucune ligne</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

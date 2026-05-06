@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}Suggestions de Réapprovisionnement - Gestion Stock{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="mb-4">
+                <i class="fas fa-bell"></i> Suggestions de Réapprovisionnement
+            </h1>
+        </div>
+        <div class="col-md-4 text-end">
+            <div class="btn-group" role="group">
+                <a href="?traitees=" class="btn btn-sm btn-outline-primary">Toutes</a>
+                <a href="?traitees=non" class="btn btn-sm btn-outline-warning">En attente</a>
+                <a href="?traitees=oui" class="btn btn-sm btn-outline-success">Traitées</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Suggestions Critiques</h6>
+                    <h3>{{ suggestions_critiques }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-warning text-dark">
+                <div class="card-body">
+                    <h6 class="card-title">En Attente</h6>
+                    <h3>{{ suggestions_en_attente }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Total</h6>
+                    <h3>{{ suggestions|length }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if suggestions %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Produit</th>
+                    <th>Quantité Suggérée</th>
+                    <th>Raison</th>
+                    <th>Priorité</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for suggestion in suggestions %}
+                <tr>
+                    <td>
+                        <strong>{{ suggestion.produit.nom }}</strong>
+                        <br>
+                        <small class="text-muted">Stock actuel: {{ suggestion.produit.quantite }}</small>
+                    </td>
+                    <td>
+                        <strong>{{ suggestion.quantite_suggeree }} unités</strong>
+                        <br>
+                        <small>Fournisseur: {{ suggestion.produit.fournisseur.nom }}</small>
+                    </td>
+                    <td>{{ suggestion.raison }}</td>
+                    <td>
+                        {% if suggestion.priorite == 'CRITIQUE' %}
+                            <span class="badge bg-danger">CRITIQUE</span>
+                        {% elif suggestion.priorite == 'HAUTE' %}
+                            <span class="badge bg-warning">HAUTE</span>
+                        {% elif suggestion.priorite == 'NORMALE' %}
+                            <span class="badge bg-info">NORMALE</span>
+                        {% else %}
+                            <span class="badge bg-secondary">BASSE</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <small>{{ suggestion.date_creation|date:"d/m/Y H:i" }}</small>
+                    </td>
+                    <td>
+                        {% if suggestion.traitee %}
+                            <span class="badge bg-success">
+                                <i class="fas fa-check"></i> Traitée
+                            </span>
+                            <br>
+                            <small>{{ suggestion.date_traitement|date:"d/m/Y" }}</small>
+                        {% else %}
+                            <span class="badge bg-warning">
+                                <i class="fas fa-hourglass"></i> En attente
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not suggestion.traitee %}
+                            <a href="{% url 'traiter_suggestion' suggestion.id %}" class="btn btn-sm btn-success" title="Marquer comme traitée">
+                                <i class="fas fa-check"></i>
+                            </a>
+                        {% endif %}
+                        <a href="{% url 'modifier_produit' suggestion.produit.id %}" class="btn btn-sm btn-primary" title="Modifier produit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-success">
+        <i class="fas fa-check-circle"></i> Aucune suggestion de réapprovisionnement
+    </div>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{% url 'home' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Retour au Dashboard
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Mouvements de stock{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Historique des mouvements</h1>
+
+{% if user.is_authenticated %}
+    {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
+        <a href="{% url 'ajouter_mouvement' %}" class="btn btn-primary mb-3">Ajouter mouvement</a>
+    {% endif %}
+{% endif %}
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Produit</th>
+            <th>Type</th>
+            <th>Quantité</th>
+            <th>Utilisateur</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for m in mouvements %}
+        <tr>
+            <td>{{ m.produit.nom }}</td>
+            <td>{{ m.type }}</td>
+            <td>{{ m.quantite }}</td>
+            <td>{{ m.utilisateur.username }}</td>
+            <td>{{ m.date }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center">Aucun mouvement trouvé.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

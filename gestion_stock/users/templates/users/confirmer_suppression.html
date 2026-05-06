@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmer la suppression - Gestion Stock{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card border-danger shadow">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">
+                    <i class="fas fa-exclamation-triangle"></i> Confirmer la suppression
+                </h5>
+            </div>
+            <div class="card-body">
+                <p class="lead">
+                    Êtes-vous sûr de vouloir supprimer l'utilisateur <strong>{{ utilisateur.username }}</strong> ?
+                </p>
+                
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-info-circle"></i> Cette action est <strong>irréversible</strong>.
+                </div>
+
+                <div class="card mb-3 bg-light">
+                    <div class="card-body">
+                        <p class="mb-1"><strong>Nom d'utilisateur:</strong> {{ utilisateur.username }}</p>
+                        <p class="mb-1"><strong>Prénom:</strong> {{ utilisateur.first_name|default:"N/A" }}</p>
+                        <p class="mb-1"><strong>Nom:</strong> {{ utilisateur.last_name|default:"N/A" }}</p>
+                        <p class="mb-1"><strong>E-mail:</strong> {{ utilisateur.email }}</p>
+                        <p class="mb-0">
+                            <strong>Rôle:</strong>
+                            {% if utilisateur.role == 'ADMIN' %}
+                                <span class="badge bg-danger">Admin</span>
+                            {% elif utilisateur.role == 'GESTIONNAIRE' %}
+                                <span class="badge bg-warning text-dark">Gestionnaire</span>
+                            {% else %}
+                                <span class="badge bg-info">Employé</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-danger btn-lg">
+                            <i class="fas fa-trash"></i> Supprimer définitivement
+                        </button>
+                        <a href="{% url 'liste_utilisateurs' %}" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Annuler
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

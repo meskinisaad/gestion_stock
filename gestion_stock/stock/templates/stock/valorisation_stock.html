@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}Valorisation du Stock - Gestion Stock{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-10">
+            <h1 class="mb-4">
+                <i class="fas fa-money-bill-wave"></i> Valorisation du Stock
+            </h1>
+        </div>
+        <div class="col-md-2 text-end">
+            <a href="{% url 'exporter_valorisation_pdf' %}" class="btn btn-danger" title="Exporter en PDF">
+                <i class="fas fa-file-pdf"></i> PDF
+            </a>
+        </div>
+    </div>
+
+    {% if valorisations %}
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Valorisation Totale</h6>
+                    <h3>{{ valorisation_total|floatformat:2 }} €</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Nombre de Produits</h6>
+                    <h3>{{ valorisations|length }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Valeur Moyenne</h6>
+                    <h3>{{ valorisation_total|add:valorisations|length|add:"1"|floatformat:2 }} €</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Produit</th>
+                    <th>Quantité</th>
+                    <th>Prix Unitaire</th>
+                    <th>Valeur Totale</th>
+                    <th>% du Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in valorisations %}
+                <tr>
+                    <td>
+                        <strong>{{ item.produit.nom }}</strong>
+                        <br>
+                        <small class="text-muted">{{ item.produit.code_barre }}</small>
+                    </td>
+                    <td>{{ item.quantite }} unités</td>
+                    <td>{{ item.prix_unitaire|floatformat:2 }} €</td>
+                    <td>
+                        <strong>{{ item.valeur_totale|floatformat:2 }} €</strong>
+                    </td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" 
+                                style="width: {% widthratio item.valeur_totale valorisation_total 100 %}%">
+                                {% widthratio item.valeur_totale valorisation_total 100 %}%
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot class="table-light">
+                <tr>
+                    <th colspan="3">TOTAL</th>
+                    <th>{{ valorisation_total|floatformat:2 }} €</th>
+                    <th>100%</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i> Aucun produit en stock
+    </div>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{% url 'home' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Retour au Dashboard
+        </a>
+    </div>
+</div>
+{% endblock %}

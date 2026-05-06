@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Ajouter Ligne Commande{% endblock %}
+
+{% block content %}
+<div class="card shadow p-4">
+    <h1 class="mb-4">Ajouter ligne à la commande #{{ commande.id }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+    </form>
+</div>
+{% endblock %}

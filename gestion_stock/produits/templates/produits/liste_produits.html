@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Liste des produits</h1>
+
+<a href="{% url 'ajouter_produit' %}" class="btn btn-primary mb-3">Ajouter un produit</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nom</th>
+            <th>Quantité</th>
+            <th>Prix</th>
+            <th>Catégorie</th>
+            <th>Fournisseur</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produit in produits %}
+        <tr>
+            <td>{{ produit.nom }}</td>
+            <td>{{ produit.quantite }}</td>
+            <td>{{ produit.prix }} DH</td>
+            <td>{{ produit.categorie }}</td>
+            <td>{{ produit.fournisseur }}</td>
+            <td>
+                {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
+                <a href="{% url 'modifier_produit' produit.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                <a href="{% url 'supprimer_produit' produit.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                {% else %}
+                <span class="text-muted">Lecture seule</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="text-center">Aucun produit trouvé.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Commandes{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Liste des commandes</h1>
+
+{% if user.is_authenticated %}
+    {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
+        <a href="{% url 'ajouter_commande' %}" class="btn btn-primary mb-3">Ajouter commande</a>
+    {% endif %}
+{% endif %}
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Fournisseur</th>
+            <th>Date</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for commande in commandes %}
+        <tr>
+            <td>{{ commande.id }}</td>
+            <td>{{ commande.fournisseur }}</td>
+            <td>{{ commande.date }}</td>
+            <td>{{ commande.statut }}</td>
+            <td>
+                <a href="{% url 'detail_commande' commande.id %}" class="btn btn-info btn-sm">Détail</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center">Aucune commande</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

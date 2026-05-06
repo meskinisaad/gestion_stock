@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestion des utilisateurs - Gestion Stock{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+        <h1>
+            <i class="fas fa-users"></i> Gestion des utilisateurs
+        </h1>
+        <a href="{% url 'creer_utilisateur' %}" class="btn btn-success">
+            <i class="fas fa-plus"></i> Ajouter un utilisateur
+        </a>
+    </div>
+</div>
+
+<div class="card shadow">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <i class="fas fa-list"></i> Liste des utilisateurs
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Nom d'utilisateur</th>
+                        <th>Prénom & Nom</th>
+                        <th>E-mail</th>
+                        <th>Rôle</th>
+                        <th>Statut</th>
+                        <th>Date d'ajout</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for utilisateur in utilisateurs %}
+                    <tr>
+                        <td>
+                            <strong>{{ utilisateur.username }}</strong>
+                        </td>
+                        <td>
+                            {{ utilisateur.first_name }} {{ utilisateur.last_name|default:"" }}
+                        </td>
+                        <td>
+                            {{ utilisateur.email }}
+                        </td>
+                        <td>
+                            {% if utilisateur.role == 'ADMIN' %}
+                                <span class="badge bg-danger">Admin</span>
+                            {% elif utilisateur.role == 'GESTIONNAIRE' %}
+                                <span class="badge bg-warning text-dark">Gestionnaire</span>
+                            {% else %}
+                                <span class="badge bg-info">Employé</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if utilisateur.is_active %}
+                                <span class="badge bg-success">
+                                    <i class="fas fa-check"></i> Actif
+                                </span>
+                            {% else %}
+                                <span class="badge bg-secondary">
+                                    <i class="fas fa-times"></i> Inactif
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <small class="text-muted">{{ utilisateur.date_joined|date:"d/m/Y H:i" }}</small>
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{% url 'modifier_utilisateur' utilisateur.id %}" class="btn btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                {% if request.user.id != utilisateur.id %}
+                                <a href="{% url 'supprimer_utilisateur' utilisateur.id %}" class="btn btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-4">
+                            <i class="fas fa-inbox fa-2x mb-2"></i>
+                            <br>Aucun utilisateur trouvé.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

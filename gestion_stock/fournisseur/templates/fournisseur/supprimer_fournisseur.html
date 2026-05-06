@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Supprimer un Fournisseur{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h3>Confirmer la Suppression</h3>
+                </div>
+                <div class="card-body">
+                    <p>Êtes-vous sûr de vouloir supprimer le fournisseur <strong>{{ fournisseur.nom }}</strong> ?</p>
+                    <p class="text-muted">Cette action est irréversible.</p>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'liste_fournisseurs' %}" class="btn btn-secondary">Annuler</a>
+                        <form method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

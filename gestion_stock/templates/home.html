@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Gestion Stock{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Dashboard</h1>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary p-3 shadow">
+            <h6>Total Produits</h6>
+            <h2>{{ total_produits }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-danger p-3 shadow">
+            <h6>Produits en alerte</h6>
+            <h2>{{ produits_alerte }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-warning p-3 shadow">
+            <h6>Valorisation Stock</h6>
+            <h2>{{ valorisation_total|floatformat:0 }} €</h2>
+            <small><a href="{% url 'valorisation_stock' %}" class="text-white">Détails</a></small>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-info p-3 shadow">
+            <h6>Suggestions</h6>
+            <h2>{{ suggestions_en_attente }}</h2>
+            <small><a href="{% url 'suggestions_reapprovisionnement' %}" class="text-white">Voir tout</a></small>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card p-3 shadow">
+            <h6 class="text-muted">Produits Expirés</h6>
+            <h3 class="text-danger">{{ produits_expires }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card p-3 shadow">
+            <h6 class="text-muted">Produits Obsolètes</h6>
+            <h3 class="text-warning">{{ produits_obsoletes }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-3 shadow">
+            <h6 class="text-muted">Analyses & Rapports</h6>
+            <div class="btn-group w-100" role="group">
+                <a href="{% url 'analyse_rotation' %}" class="btn btn-sm btn-outline-primary">Rotation</a>
+                <a href="{% url 'valorisation_stock' %}" class="btn btn-sm btn-outline-success">Valorisation</a>                <a href="{% url 'exporter_peremption_pdf' %}" class="btn btn-sm btn-outline-danger">Péremption</a>            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow p-4 mb-4">
+    <h3 class="mb-3">Graphique des quantités</h3>
+    <canvas id="stockChart"></canvas>
+</div>
+
+<div class="card shadow p-4">
+    <h3>Derniers produits</h3>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Nom</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+                <th>Valorisation</th>
+                <th>Expiration</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in produits %}
+            <tr>
+                <td>{{ p.nom }}</td>
+                <td>
+                    {% if p.quantite <= p.seuil_alerte %}
+                        <span class="badge bg-danger">{{ p.quantite }}</span>
+                    {% else %}
+                        <span class="badge bg-success">{{ p.quantite }}</span>
+                    {% endif %}
+                </td>
+                <td>{{ p.prix }} €</td>
+                <td>
+                    <strong>{{ p.valorisation_stock|floatformat:2 }} €</strong>
+                </td>
+                <td>
+                    {% if p.date_expiration %}
+                        {% if p.est_expire %}
+                            <span class="badge bg-danger">Expiré</span>
+                        {% elif p.jours_avant_expiration <= 30 %}
+                            <span class="badge bg-warning">{{ p.jours_avant_expiration }}j</span>
+                        {% else %}
+                            <span class="badge bg-success">{{ p.jours_avant_expiration }}j</span>
+                        {% endif %}
+                    {% else %}
+                        <span class="badge bg-secondary">-</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{{ noms|json_script:"produit-noms" }}
+{{ quantites|json_script:"produit-quantites" }}
+
+<script>
+    const noms = JSON.parse(document.getElementById('produit-noms').textContent);
+    const quantites = JSON.parse(document.getElementById('produit-quantites').textContent);
+
+    const ctx = document.getElementById('stockChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: noms,
+            datasets: [{
+                label: 'Quantité en stock',
+                data: quantites,
+                borderWidth: 1,
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,613 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-04-18T18:07:39.385Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Informatique",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-04-18T18:08:30.835Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Dell",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-04-18T18:09:44.211Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Clavier",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-04-18T18:12:20.361Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "ENTREE - Clavier",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-04-18T18:13:22.526Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Clavier",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-04-18T18:14:07.124Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "ENTREE - Clavier",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-04-18T18:15:01.354Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Clavier",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-04-18T18:15:41.080Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "2",
+    "object_repr": "ENTREE - Clavier",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-04-18T18:17:43.213Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Clavier",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-04-18T18:17:55.962Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "ENTREE - Clavier",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Quantite\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-04-18T18:21:01.450Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Clavier",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-04-18T18:21:15.271Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "ENTREE - Clavier",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-04-18T18:22:15.288Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "2",
+    "object_repr": "ENTREE - Clavier",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-04-18T18:23:06.829Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "2",
+    "object_repr": "ENTREE - Clavier",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Quantite\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-04-18T18:23:24.673Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "3",
+    "object_repr": "ENTREE - Clavier",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-04-18T18:25:43.268Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "Ecran",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-04-18T18:25:59.658Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "4",
+    "object_repr": "ENTREE - Ecran",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-04-18T18:27:20.612Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "3",
+    "object_repr": "souris",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-04-18T18:29:24.661Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "2",
+    "object_repr": "saif",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-04-18T18:30:41.587Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "3",
+    "object_repr": "rayane",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-04-18T18:31:17.620Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "4",
+    "object_repr": "aymen",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-04-20T13:25:34.287Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "électroménager",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-04-20T13:26:11.155Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "meskini",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-04-20T13:29:10.610Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "Panineuse",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-04-20T14:48:36.416Z",
+    "user": 5,
+    "content_type": 12,
+    "object_id": "6",
+    "object_repr": "saifedine",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-04-20T14:48:49.808Z",
+    "user": 5,
+    "content_type": 12,
+    "object_id": "2",
+    "object_repr": "saif",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-04-20T14:49:17.013Z",
+    "user": 5,
+    "content_type": 12,
+    "object_id": "6",
+    "object_repr": "saifedine",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "dow79heaj2i755019mvr6nk3lt2z26dj",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBhoFCX7j0DGZhBqgaS0q6Md7dNutDte-__twi4LiWsnecwkbgIJU6_LGJ6ct0FPbDem0ytLvMU5Z7Iw3Z5a8Sv69H-HRTsZVuD13p0aVTJWM5E7BVCzAPos9EclR8sG0bv9MaigYyQlSKn2VlDEcTnC90aN9M:1wEpxB:Ocy741QVBmlSLa1pDre4BI5tTpFR7N3jseVfv1RepH0",
+    "expire_date": "2026-05-04T14:50:25.862Z"
+  }
+},
+{
+  "model": "commandes.commande",
+  "pk": 1,
+  "fields": {
+    "fournisseur": 1,
+    "date": "2026-04-20T14:23:48.915Z",
+    "statut": "entrer"
+  }
+},
+{
+  "model": "commandes.lignecommande",
+  "pk": 1,
+  "fields": {
+    "commande": 1,
+    "produit": 2,
+    "quantite": 12,
+    "prix": 4677.0
+  }
+},
+{
+  "model": "commandes.lignecommande",
+  "pk": 2,
+  "fields": {
+    "commande": 1,
+    "produit": 3,
+    "quantite": 12,
+    "prix": 1200.0
+  }
+},
+{
+  "model": "produits.categorie",
+  "pk": 1,
+  "fields": {
+    "nom": "Informatique"
+  }
+},
+{
+  "model": "produits.categorie",
+  "pk": 2,
+  "fields": {
+    "nom": "électroménager"
+  }
+},
+{
+  "model": "produits.produit",
+  "pk": 1,
+  "fields": {
+    "nom": "Clavier",
+    "description": "Clavier gaming",
+    "quantite": 30,
+    "seuil_alerte": 2,
+    "code_barre": "1234",
+    "prix": 100.0,
+    "categorie": 1,
+    "fournisseur": 1
+  }
+},
+{
+  "model": "produits.produit",
+  "pk": 2,
+  "fields": {
+    "nom": "Ecran",
+    "description": "Ecran Gaming",
+    "quantite": 25,
+    "seuil_alerte": 3,
+    "code_barre": "12345",
+    "prix": 600.0,
+    "categorie": 1,
+    "fournisseur": 1
+  }
+},
+{
+  "model": "produits.produit",
+  "pk": 3,
+  "fields": {
+    "nom": "souris",
+    "description": "souris Gaming",
+    "quantite": 3,
+    "seuil_alerte": 5,
+    "code_barre": "123456",
+    "prix": 100.0,
+    "categorie": 1,
+    "fournisseur": 1
+  }
+},
+{
+  "model": "stock.mouvementstock",
+  "pk": 2,
+  "fields": {
+    "produit": 1,
+    "utilisateur": 1,
+    "type": "ENTREE",
+    "quantite": 7,
+    "date": "2026-04-18T18:15:41.078Z"
+  }
+},
+{
+  "model": "stock.mouvementstock",
+  "pk": 3,
+  "fields": {
+    "produit": 1,
+    "utilisateur": 1,
+    "type": "ENTREE",
+    "quantite": 20,
+    "date": "2026-04-18T18:23:24.673Z"
+  }
+},
+{
+  "model": "stock.mouvementstock",
+  "pk": 4,
+  "fields": {
+    "produit": 2,
+    "utilisateur": 1,
+    "type": "ENTREE",
+    "quantite": 20,
+    "date": "2026-04-18T18:25:59.657Z"
+  }
+},
+{
+  "model": "users.utilisateur",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$KGxX1AqOVF681AMz0eevmm$JjMr/TbcitXTlnPbRt62CcgESDbiHdhHI9gbhVUSC6Q=",
+    "last_login": "2026-04-20T14:50:25.861Z",
+    "is_superuser": true,
+    "username": "meskinisaad",
+    "first_name": "",
+    "last_name": "",
+    "email": "meskinisaad01@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-04-18T17:58:51.271Z",
+    "role": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.utilisateur",
+  "pk": 2,
+  "fields": {
+    "password": "Meskini2006",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "saif",
+    "first_name": "Saif",
+    "last_name": "Walhane",
+    "email": "Saif@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-18T18:27:23Z",
+    "role": "GESTIONNAIRE",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.utilisateur",
+  "pk": 3,
+  "fields": {
+    "password": "Rayane",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "rayane",
+    "first_name": "Rayane",
+    "last_name": "Bendaanoune",
+    "email": "rayane@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-18T18:29:46Z",
+    "role": "GESTIONNAIRE",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.utilisateur",
+  "pk": 4,
+  "fields": {
+    "password": "Aymen",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "aymen",
+    "first_name": "Aymen",
+    "last_name": "Idrissi",
+    "email": "aymen@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-18T18:30:44Z",
+    "role": "EMPLOYE",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.utilisateur",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$wRzTKYbMoO7aYIMO51SwMn$Yy6Oa6kyoMClWfyIx61euhv3RhBch6vZHh7lWcjGNtw=",
+    "last_login": "2026-04-20T14:47:07.574Z",
+    "is_superuser": true,
+    "username": "saad",
+    "first_name": "",
+    "last_name": "",
+    "email": "saad@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-04-20T14:46:07.477Z",
+    "role": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.utilisateur",
+  "pk": 6,
+  "fields": {
+    "password": "Meskini2006",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "saifedine",
+    "first_name": "saif",
+    "last_name": "walhane",
+    "email": "saif@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-20T14:47:11Z",
+    "role": "EMPLOYE",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "fournisseur.fournisseur",
+  "pk": 1,
+  "fields": {
+    "nom": "Dell",
+    "email": "dell@gmail.com",
+    "telephone": "0600000000",
+    "adresse": "orangers casablanca"
+  }
+},
+{
+  "model": "fournisseur.fournisseur",
+  "pk": 2,
+  "fields": {
+    "nom": "meskini",
+    "email": "meskini@gmail.com",
+    "telephone": "0704685152",
+    "adresse": "Riad sofia"
+  }
+}
+]
