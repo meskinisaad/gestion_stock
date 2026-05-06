@@ -55,13 +55,13 @@ def generer_rapport_valorisation_pdf():
         data.append([
             produit.nom[:30],
             str(produit.quantite),
-            f"{produit.prix:.2f}€",
-            f"{valeur:.2f}€",
+            f"{produit.prix:.2f}DH",
+            f"{valeur:.2f}DH",
             f"{pourcentage:.1f}%",
         ])
     
     # Ajouter total
-    data.append(['', '', 'TOTAL', f"{valorisation_total:.2f}€", '100%'])
+    data.append(['', '', 'TOTAL', f"{valorisation_total:.2f}DH", '100%'])
     
     # Tableau
     table = Table(data, colWidths=[2*inch, 1*inch, 1.2*inch, 1.2*inch, 1.3*inch])
@@ -85,9 +85,9 @@ def generer_rapport_valorisation_pdf():
     # Résumé
     elements.append(Paragraph("RÉSUMÉ FINANCIER", heading_style))
     summary_data = [
-        ['Valorisation Totale du Stock', f"{valorisation_total:.2f} €"],
+        ['Valorisation Totale du Stock', f"{valorisation_total:.2f} DH"],
         ['Nombre de Produits', str(produits.count())],
-        ['Valeur Moyenne par Produit', f"{valorisation_total / produits.count():.2f} €" if produits.count() > 0 else "N/A"],
+        ['Valeur Moyenne par Produit', f"{valorisation_total / produits.count():.2f} DH" if produits.count() > 0 else "N/A"],
     ]
     
     summary_table = Table(summary_data, colWidths=[3*inch, 2*inch])

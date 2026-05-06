@@ -23,7 +23,7 @@
     <div class="col-md-3">
         <div class="card text-white bg-warning p-3 shadow">
             <h6>Valorisation Stock</h6>
-            <h2>{{ valorisation_total|floatformat:0 }} €</h2>
+            <h2>{{ valorisation_total|floatformat:0 }} DH</h2>
             <small><a href="{% url 'valorisation_stock' %}" class="text-white">Détails</a></small>
         </div>
     </div>
@@ -90,9 +90,9 @@
                         <span class="badge bg-success">{{ p.quantite }}</span>
                     {% endif %}
                 </td>
-                <td>{{ p.prix }} €</td>
+                <td>{{ p.prix }} DH</td>
                 <td>
-                    <strong>{{ p.valorisation_stock|floatformat:2 }} €</strong>
+                    <strong>{{ p.valorisation_stock|floatformat:2 }} DH</strong>
                 </td>
                 <td>
                     {% if p.date_expiration %}

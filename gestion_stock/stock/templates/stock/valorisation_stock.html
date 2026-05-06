@@ -23,7 +23,7 @@
             <div class="card bg-success text-white">
                 <div class="card-body">
                     <h6 class="card-title">Valorisation Totale</h6>
-                    <h3>{{ valorisation_total|floatformat:2 }} €</h3>
+                    <h3>{{ valorisation_total|floatformat:2 }} DH</h3>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="card bg-warning text-white">
                 <div class="card-body">
                     <h6 class="card-title">Valeur Moyenne</h6>
-                    <h3>{{ valorisation_total|add:valorisations|length|add:"1"|floatformat:2 }} €</h3>
+                    <h3>{{ valorisation_total|add:valorisations|length|add:"1"|floatformat:2 }} DH</h3>
                 </div>
             </div>
         </div>
@@ -65,9 +65,9 @@
                         <small class="text-muted">{{ item.produit.code_barre }}</small>
                     </td>
                     <td>{{ item.quantite }} unités</td>
-                    <td>{{ item.prix_unitaire|floatformat:2 }} €</td>
+                    <td>{{ item.prix_unitaire|floatformat:2 }} DH</td>
                     <td>
-                        <strong>{{ item.valeur_totale|floatformat:2 }} €</strong>
+                        <strong>{{ item.valeur_totale|floatformat:2 }} DH</strong>
                     </td>
                     <td>
                         <div class="progress">
@@ -83,7 +83,7 @@
             <tfoot class="table-light">
                 <tr>
                     <th colspan="3">TOTAL</th>
-                    <th>{{ valorisation_total|floatformat:2 }} €</th>
+                    <th>{{ valorisation_total|floatformat:2 }} DH</th>
                     <th>100%</th>
                 </tr>
             </tfoot>

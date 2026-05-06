@@ -24,7 +24,7 @@ class ProduitForm(forms.ModelForm):
             'quantite': 'Quantité en stock',
             'seuil_alerte': 'Seuil d\'alerte',
             'code_barre': 'Code-barres',
-            'prix': 'Prix unitaire (€)',
+            'prix': 'Prix unitaire (DH)',
             'categorie': 'Catégorie',
             'fournisseur': 'Fournisseur',
             'date_expiration': 'Date de péremption',
