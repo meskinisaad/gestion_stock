@@ -41,7 +41,7 @@ def ajouter_mouvement(request):
     return render(request, 'stock/form_mouvement.html', {'form': form})
 
 
-@login_required
+@admin_or_gestionnaire_required
 def valorisation_stock(request):
     """Affiche la valorisation complète du stock"""
     produits = Produit.objects.all()
@@ -69,7 +69,7 @@ def valorisation_stock(request):
     return render(request, 'stock/valorisation_stock.html', context)
 
 
-@login_required
+@admin_or_gestionnaire_required
 def analyse_rotation(request):
     """Analyse la rotation des produits (mouvements par période)"""
     produits = Produit.objects.all()
@@ -119,7 +119,7 @@ def analyse_rotation(request):
     return render(request, 'stock/analyse_rotation.html', context)
 
 
-@login_required
+@admin_or_gestionnaire_required
 def suggestions_reapprovisionnement(request):
     """Affiche les suggestions de réapprovisionnement"""
     suggestions = SuggestionReapprovisionnement.objects.all()
@@ -180,7 +180,7 @@ def generer_suggestion_reapprovisionnement(produit):
 
 # ===== VUES D'EXPORT PDF =====
 
-@login_required
+@admin_or_gestionnaire_required
 def exporter_valorisation_pdf(request):
     """Exporte le rapport de valorisation en PDF"""
     pdf_buffer = generer_rapport_valorisation_pdf()
@@ -199,7 +199,7 @@ def exporter_mouvements_pdf(request):
     return response
 
 
-@login_required
+@admin_or_gestionnaire_required
 def exporter_suggestions_pdf(request):
     """Exporte le rapport des suggestions en PDF"""
     pdf_buffer = generer_rapport_suggestions_pdf()

@@ -16,6 +16,8 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, f'Bienvenue {user.first_name or user.username} !')
+            if user.role == 'EMPLOYE':
+                return redirect('liste_produits')
             return redirect('home')
         else:
             messages.error(request, 'Nom d\'utilisateur ou mot de passe incorrect.')

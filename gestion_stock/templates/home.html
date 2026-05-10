@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard - Gestion Stock{% endblock %}
+{% block title %}Tableau de bord - Gestion de stock{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">Dashboard</h1>
+<h1 class="mb-4">Tableau de bord</h1>
 
 <div class="row mb-4">
     <div class="col-md-3">
@@ -20,21 +20,25 @@
         </div>
     </div>
 
-    <div class="col-md-3">
-        <div class="card text-white bg-warning p-3 shadow">
-            <h6>Valorisation Stock</h6>
-            <h2>{{ valorisation_total|floatformat:0 }} DH</h2>
-            <small><a href="{% url 'valorisation_stock' %}" class="text-white">Détails</a></small>
+    {% if user.is_authenticated %}
+        {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
+        <div class="col-md-3">
+            <div class="card text-white bg-warning p-3 shadow">
+                <h6>Valorisation du stock</h6>
+                <h2>{{ valorisation_total|floatformat:0 }} DH</h2>
+                <small><a href="{% url 'valorisation_stock' %}" class="text-white">Détails</a></small>
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-3">
-        <div class="card text-white bg-info p-3 shadow">
-            <h6>Suggestions</h6>
-            <h2>{{ suggestions_en_attente }}</h2>
-            <small><a href="{% url 'suggestions_reapprovisionnement' %}" class="text-white">Voir tout</a></small>
+        <div class="col-md-3">
+            <div class="card text-white bg-info p-3 shadow">
+                <h6>Suggestions</h6>
+                <h2>{{ suggestions_en_attente }}</h2>
+                <small><a href="{% url 'suggestions_reapprovisionnement' %}" class="text-white">Voir tout</a></small>
+            </div>
         </div>
-    </div>
+        {% endif %}
+    {% endif %}
 </div>
 
 <div class="row mb-4">
@@ -54,10 +58,16 @@
 
     <div class="col-md-6">
         <div class="card p-3 shadow">
-            <h6 class="text-muted">Analyses & Rapports</h6>
+            <h6 class="text-muted">Analyses et rapports</h6>
             <div class="btn-group w-100" role="group">
-                <a href="{% url 'analyse_rotation' %}" class="btn btn-sm btn-outline-primary">Rotation</a>
-                <a href="{% url 'valorisation_stock' %}" class="btn btn-sm btn-outline-success">Valorisation</a>                <a href="{% url 'exporter_peremption_pdf' %}" class="btn btn-sm btn-outline-danger">Péremption</a>            </div>
+                {% if user.is_authenticated %}
+                    {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
+                    <a href="{% url 'analyse_rotation' %}" class="btn btn-sm btn-outline-primary">Rotation</a>
+                    <a href="{% url 'valorisation_stock' %}" class="btn btn-sm btn-outline-success">Valorisation</a>
+                    {% endif %}
+                {% endif %}
+                <a href="{% url 'exporter_peremption_pdf' %}" class="btn btn-sm btn-outline-danger">Péremption</a>
+            </div>
         </div>
     </div>
 </div>

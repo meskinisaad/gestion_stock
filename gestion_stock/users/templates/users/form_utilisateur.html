@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ titre }} - Gestion Stock{% endblock %}
+{% block title %}{{ titre }} - Gestion de stock{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
@@ -14,10 +14,10 @@
             <div class="card-body">
                 {% if form.errors %}
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Erreurs:</strong>
+                    <strong>Erreurs :</strong>
                     {% for field, errors in form.errors.items %}
                         <div>
-                            <strong>{{ field }}:</strong>
+                            <strong>{{ form[field].label }} :</strong>
                             {% for error in errors %}
                                 <div>{{ error }}</div>
                             {% endfor %}
@@ -128,7 +128,7 @@
 
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="fas fa-save"></i> {{ titre|truncatewords:"2" }}
+                            <i class="fas fa-save"></i> Enregistrer
                         </button>
                         <a href="{% url 'liste_utilisateurs' %}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> Retour

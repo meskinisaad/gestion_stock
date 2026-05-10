@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import F, Sum
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
@@ -8,6 +8,9 @@ from stock.models import MouvementStock, SuggestionReapprovisionnement
 
 @login_required
 def home(request):
+    if request.user.role == 'EMPLOYE':
+        return redirect('liste_produits')
+
     total_produits = Produit.objects.count()
     produits_alerte = Produit.objects.filter(quantite__lte=F('seuil_alerte')).count()
     derniers_produits = Produit.objects.all().order_by('-id')[:5]

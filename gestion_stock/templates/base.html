@@ -3,36 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Gestion de Stock{% endblock %}</title>
+    <title>{% block title %}Gestion de stock{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Gestion Stock</a>
+            {% if user.is_authenticated and user.role == 'EMPLOYE' %}
+            <a class="navbar-brand" href="{% url 'liste_produits' %}">Gestion de stock</a>
+            {% else %}
+            <a class="navbar-brand" href="{% url 'home' %}">Gestion de stock</a>
+            {% endif %}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     {% if user.is_authenticated %}
+                    {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+                        <a class="nav-link" href="{% url 'home' %}">Tableau de bord</a>
                     </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'liste_produits' %}">Produits</a>
                     </li>
+                    {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-chart-bar"></i> Analyses
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'valorisation_stock' %}">Valorisation du Stock</a></li>
-                            <li><a class="dropdown-item" href="{% url 'analyse_rotation' %}">Analyse de Rotation</a></li>
+                            <li><a class="dropdown-item" href="{% url 'valorisation_stock' %}">Valorisation du stock</a></li>
+                            <li><a class="dropdown-item" href="{% url 'analyse_rotation' %}">Analyse de rotation</a></li>
                             <li><a class="dropdown-item" href="{% url 'suggestions_reapprovisionnement' %}">Suggestions</a></li>
                         </ul>
                     </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'produits_alerte' %}">Alertes</a>
                     </li>
