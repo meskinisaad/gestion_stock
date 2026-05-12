@@ -57,6 +57,11 @@
                         </a>
                     </li>
                     {% endif %}
+                    {% if user.role == 'ADMIN' or user.role == 'GESTIONNAIRE' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'liste_fournisseurs' %}">Fournisseur</a>
+                    </li>
+                    {% endif %}
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav">
